@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<!-- 
+
+	# tiles 
+	
+		- 스프링 타일즈란 뷰페이지의 jsp들을 상단, 사이드, 메인, 하단을 설정 상태로 include 처리해주는 구조의 템플릿
+	 	
+	 	- 공통사용 및 중복되는 부분들을 페이지별로 따로 작성해주지 않는다. (주로 화면의 상단 및 하단 메뉴 등)
+	 	
+	 	- 공통사용 및 중복되는 페이지들을 분리하여 일괄관리 할 수 있다. 
+	 	
+	 	- tiles와 유사한 SiteMesh 레이아웃 프레임워크
+	
+		[ 구현 예시 ] 
+		
+		1) pom.xml 에 tiles 관련 dependency 추가
+		
+			<dependency>
+		      <groupId>org.apache.tiles</groupId>
+		      <artifactId>tiles-core</artifactId>
+		      <version>3.0.7</version>
+	        </dependency>
+	        <dependency>
+		      <groupId>org.apache.tiles</groupId>
+		      <artifactId>tiles-jsp</artifactId>
+		      <version>3.0.7</version>
+	        </dependency>
+	        <dependency>
+		      <groupId>org.apache.tiles</groupId>
+		      <artifactId>tiles-servlet</artifactId>
+		      <version>3.0.7</version>
+	        </dependency>
+		
+		2) servlet-context.xml 파일에 타일즈 View Resolver 를 추가
+			<beans:bean id="urlBasedViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		        <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		        <beans:property name="order" value="1" />		
+		    </beans:bean>
+	     
+		    <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		        <beans:property name="definitions" value="classpath:tiles/*.xml" />	
+		    </beans:bean>
+			
+		3) tiles 관련 설정 xml 지시서 작성
+			
+			- 선언문 작성
+			<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+		
+			- definition 정의
+		
+		4) 화면 레이아웃 작성
+
+
+ -->
+
+
+<tiles-definitions>
+	
+	<definition name="default" template="/WEB-INF/views/tiles/tilesEx/layout.jsp"> 	<!-- 화면의 레이아웃 -->
+		<put-attribute name="header" value="/WEB-INF/views/tiles/tilesEx/header.jsp"/>	<!-- 화면의 상단부 -->
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/tilesEx/footer.jsp"/>	<!-- 화면의 하단부 -->
+		<put-attribute name="side" value="/WEB-INF/views/tiles/tilesEx/side.jsp"/>		<!-- 화면의 좌측(menu,side,aside,nav) -->
+	</definition>
+	
+	<definition name="/content1" extends="default">
+		<put-attribute name="content" value="/WEB-INF/views/tiles/tilesEx/content1.jsp" /> <!-- 화면의 본문 (content , body , main , article) -->
+		<put-attribute name="title"  value="본문1"/> 										<!-- 웹페이지의 제목 -->
+	</definition>
+	
+	<definition name="/content2" extends="default">
+		<put-attribute name="content" value="/WEB-INF/views/tiles/tilesEx/content2.jsp" /> <!-- 화면의 본문 (content , body , main , article) -->
+		<put-attribute name="title"  value="본문2"/> 										<!-- 웹페이지의 제목 -->
+	</definition>
+	
+	<definition name="/content3" extends="default">
+		<put-attribute name="content" value="/WEB-INF/views/tiles/tilesEx/content3.jsp" /> <!-- 화면의 본문 (content , body , main , article) -->
+		<put-attribute name="title"  value="본문3"/> 										<!-- 웹페이지의 제목 -->
+	</definition>
+	
+</tiles-definitions>
+
+
+

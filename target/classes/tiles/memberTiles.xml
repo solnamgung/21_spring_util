@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="memberLayout" template="/WEB-INF/views/tiles/tilesEx/layout.jsp">		
+ 		<put-attribute name="header" value="/WEB-INF/views/tiles/tilesEx/header.jsp"/>	
+ 		<put-attribute name="footer" value="/WEB-INF/views/tiles/tilesEx/footer.jsp"/>	
+ 		<put-attribute name="side"   value="/WEB-INF/views/tiles/tilesEx/side.jsp"/> 
+ 	</definition>
+	
+	<definition name="m/login" extends="memberLayout">												
+		<put-attribute name="content" value="/WEB-INF/views/tiles/member/loginForm.jsp"/> 					
+		<put-attribute name="title"   value="로그인"/> 											
+	</definition>
+	
+	<definition name="m/detail" extends="memberLayout">										
+		<put-attribute name="content" value="/WEB-INF/views/tiles/member/memberDetail.jsp"/>
+		<put-attribute name="title"   value="회원정보"/> 											
+	</definition>
+	
+	<definition name="m/cart" extends="memberLayout">												
+		<put-attribute name="content" value="/WEB-INF/views/tiles/member/cart.jsp"/> 					
+		<put-attribute name="title"   value="장바구니"/> 											
+	</definition>
+		
+	
+	<definition name="m/myPage" extends="memberLayout">												
+		<put-attribute name="content" value="/WEB-INF/views/tiles/member/myPage.jsp"/> 					
+		<put-attribute name="title"   value="마이페이지"/> 
+	</definition>
+	
+</tiles-definitions>
