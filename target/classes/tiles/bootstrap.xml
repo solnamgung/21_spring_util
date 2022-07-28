@@ -23,5 +23,13 @@
 		<put-attribute name="title" value="상품상세"/>
 	</definition>
 	
+	<definition name="/abc" extends="bootstrapLayout">
+		<put-attribute name="content" value="/WEB-INF/views/tiles/bootstrap/blog.jsp"/>
+		<put-attribute name="title" value="상품상세"/>
+	</definition>
+	
 
 </tiles-definitions>
+
+
+

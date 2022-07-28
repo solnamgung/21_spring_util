@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("bootstrapLayout")
+@RequestMapping("/bootstrap")
 public class BootStrapController {
 
 	@RequestMapping(value="/index" , method=RequestMethod.GET)
 	public String index() {
-		return "/bootIndex";
+		return "bootIndex";
 	}
 	
 	@RequestMapping(value="/checkout" , method=RequestMethod.GET)
@@ -23,7 +23,14 @@ public class BootStrapController {
 		return "/a";
 	}
 	
+	@RequestMapping(value="/blog" , method=RequestMethod.GET)
+	public String blog() {
+		return "/abc";
+	}
+	
 	
 	
 	
 }
+
+
